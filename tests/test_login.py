@@ -30,6 +30,7 @@ def test_login(page,data):
     login.login(data["username"], data["password"])
 
     message=login.get_flash_message()
+    assert False
     if data["expected"] == "success":
         assert "You logged into a secure area!" in message
     else:

@@ -34,6 +34,7 @@ class LoginPage:
 
         with self.page.expect_navigation(timeout=Config.TIMEOUT):
             self.page.click("button[type='submit']")
+
     def get_flash_message(self):
         flash=self.page.locator("#flash")
         flash.wait_for(timeout=Config.TIMEOUT)
