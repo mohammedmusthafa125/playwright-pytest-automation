@@ -24,3 +24,13 @@ def pytest_runtest_makereport(item, call):
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
             screenshot_name = f"{item.name}_{timestamp}.png"
             page.screenshot(path=f"screenshots/{screenshot_name}")
+
+from pages.Login_Page import LoginPage
+
+
+@pytest.fixture
+def logged_in_page(page):
+    login =LoginPage(page)
+    login.open()
+    login.login("tomsmith","SuperSecretPassword!")
+    return page

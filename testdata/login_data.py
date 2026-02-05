@@ -10,3 +10,9 @@ login_test_data = [
         "expected": "failure"
     }
 ]
+negative_login_data = [
+    {"username": "", "password": "SuperSecretPassword!", "expected": "Your username is invalid!"},
+    {"username": "tomsmith", "password": "", "expected": "Your password is invalid!"},
+    {"username": "", "password": "", "expected": "Your username is invalid!"},
+    {"username": "wrong", "password": "wrong", "expected": "Your username is invalid!"}
+]

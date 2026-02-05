@@ -1,13 +1,14 @@
+import pytest
+
 from pages.Login_Page import LoginPage
 from pages.Dashboard_Page import DashboardPage
 
-def test_logout(page):
-    login = LoginPage(page)
-    dashboard = DashboardPage(page)
-
-    login.open()
-    login.login("tomsmith", "SuperSecretPassword!")
-
+@pytest.mark.regression
+def test_logout(logged_in_page):
+    dashboard = DashboardPage(logged_in_page)
     dashboard.click_logout()
 
-    assert "login" in page.url
+    assert "login" in logged_in_page.url
+    assert False
+
+

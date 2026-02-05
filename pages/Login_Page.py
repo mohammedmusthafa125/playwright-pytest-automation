@@ -29,13 +29,13 @@ class LoginPage:
 
 
     def login(self,username,password):
-        self.page.fill("#username",username)
-        self.page.fill("#password",password)
+        self.page.get_by_label("Username").fill(username)
+        self.page.get_by_label("Password").fill(password)
 
-        with self.page.expect_navigation(timeout=Config.TIMEOUT):
-            self.page.click("button[type='submit']")
+        with self.page.expect_navigation():
+            self.page.get_by_role("button",name="Login").click()
 
     def get_flash_message(self):
-        flash=self.page.locator("#flash")
-        flash.wait_for(timeout=Config.TIMEOUT)
-        return flash.inner_text()
+        flash = self.page.locator("#flash")
+        flash.wait_for()
+        return flash.inner_text().replace("×", "").strip()
