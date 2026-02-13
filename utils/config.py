@@ -3,6 +3,6 @@ class Config:
     LOGIN_PATH = "/login"
 
     BROWSER = "firefox"
-    HEADLESS = True
+    HEADLESS = False
 
     TIMEOUT = 30000
