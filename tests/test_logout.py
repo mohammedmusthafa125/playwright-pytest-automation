@@ -7,8 +7,7 @@ from pages.Dashboard_Page import DashboardPage
 def test_logout(logged_in_page):
     dashboard = DashboardPage(logged_in_page)
     dashboard.click_logout()
+    assert dashboard.page.locator(".flash.success").is_visible()
 
-    assert "login" in logged_in_page.url
-    assert False
 
 

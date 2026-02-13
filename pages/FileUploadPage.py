@@ -1,7 +1,8 @@
 class FileUploadPage:
     def __init__(self, page):
         self.page = page
-        self.file_input = page.locator("input[type='file']")
+        self.file_input = page.locator("#file-upload")
+
         self.upload_button = page.get_by_role("button", name="Upload")
 
     def open(self):
