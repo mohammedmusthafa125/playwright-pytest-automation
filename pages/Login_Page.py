@@ -27,13 +27,11 @@ class LoginPage:
     def open(self):
         self.page.goto(Config.BASE_URL + Config.LOGIN_PATH)
 
-
-    def login(self,username,password):
-        self.page.get_by_label("Username").fill(username)
-        self.page.get_by_label("Password").fill(password)
-
-        with self.page.expect_navigation():
-            self.page.get_by_role("button",name="Login").click()
+    def test_login(page, config):
+        page.goto(f"{config['base_url']}/login")
+        page.fill("#username", config["username"])
+        page.fill("#password", config["password"])
+        page.click("button[type='submit']")
 
     def get_flash_message(self):
         flash = self.page.locator("#flash")

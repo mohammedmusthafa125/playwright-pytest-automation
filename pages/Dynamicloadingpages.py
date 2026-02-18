@@ -5,7 +5,7 @@ class DynamicLoadingPage:
         self.finish_text=page.locator("#finish")
 
     def open(self):
-        self.page.goto("https://the-internet.herokuapp.com/dynamic_loading/2")
+        self.page.goto("dynamic_loading/2")
 
     def load(self):
         self.start_button.click()

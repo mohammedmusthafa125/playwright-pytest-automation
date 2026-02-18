@@ -6,7 +6,7 @@ class FileUploadPage:
         self.upload_button = page.get_by_role("button", name="Upload")
 
     def open(self):
-        self.page.goto("https://the-internet.herokuapp.com/upload")
+        self.page.goto("upload")
 
     def upload_file(self, file_path):
         self.file_input.set_input_files(file_path)

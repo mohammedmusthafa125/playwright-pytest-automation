@@ -47,3 +47,8 @@ def test_invalid_login(page, data):
 
     message = login.get_flash_message()
     assert message == data["expected"]
+
+
+
+def test_change_password(shared_user):
+    change_password(shared_user)
