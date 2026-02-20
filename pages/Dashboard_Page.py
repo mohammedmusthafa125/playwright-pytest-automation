@@ -4,4 +4,5 @@ class DashboardPage:
         self.page = page
 
     def click_logout(self):
-        self.page.click("a[href='/logout']")
+        with self.page.expect_navigation():
+            self.page.get_by_role("link", name="Logout").click()

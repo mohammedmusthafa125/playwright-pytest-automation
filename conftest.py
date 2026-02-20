@@ -44,6 +44,21 @@ def pytest_addoption(parser):
         help="Environment to run tests against"
     )
 
+@pytest.fixture(scope="session")
+def config(request):
+    env_name=request.config.getoption("--env")
+    env_path=f"config/{env_name}.env"
+
+    if not os.path.exists(env_path):
+        raise Exception(f"environment file {env_path} does not exist")
+    load_dotenv(env_path)
+
+    return {
+        "base_url": os.getenv("BASE_URL"),
+        "username": os.getenv("TEST_USERNAME"),
+        "password": os.getenv("TEST_PASSWORD"),
+    }
+
 
 import pytest
 from config.environments import ENVIRONMENTS
@@ -72,3 +87,4 @@ def config():
         "password":os.getenv("PASSWORD"),
 
     }
+

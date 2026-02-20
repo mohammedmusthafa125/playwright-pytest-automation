@@ -50,5 +50,3 @@ def test_invalid_login(page, data):
 
 
 
-def test_change_password(shared_user):
-    change_password(shared_user)

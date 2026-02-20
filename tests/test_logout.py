@@ -6,8 +6,13 @@ from pages.Dashboard_Page import DashboardPage
 @pytest.mark.regression
 def test_logout(logged_in_page):
     dashboard = DashboardPage(logged_in_page)
+
     dashboard.click_logout()
-    assert dashboard.page.locator(".flash.success").is_visible()
+
+
+
+    assert dashboard.page.get_by_text("You logged out").is_visible()
+
 
 
 

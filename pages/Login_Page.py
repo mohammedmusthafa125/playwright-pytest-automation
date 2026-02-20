@@ -24,14 +24,22 @@ class LoginPage:
     def __init__(self,page):
         self.page=page
 
-    def open(self):
-        self.page.goto(Config.BASE_URL + Config.LOGIN_PATH)
+        self.username_input=page.locator("#username")
+        self.password_input=page.locator("#password")
+        self.login_button=page.locator("button[type='submit']")
+        self.flash_message=page.locator("#flash")
 
-    def test_login(page, config):
-        page.goto(f"{config['base_url']}/login")
-        page.fill("#username", config["username"])
-        page.fill("#password", config["password"])
-        page.click("button[type='submit']")
+    def open(self):
+        self.page.goto(
+            Config.BASE_URL +Config.LOGIN_PATH,
+            wait_until="domcontentloaded",
+            timeout=60000
+        )
+
+    def login(self,username,password):
+        self.username_input.fill(username)
+        self.password_input.fill(password)
+        self.login_button.click()
 
     def get_flash_message(self):
         flash = self.page.locator("#flash")
